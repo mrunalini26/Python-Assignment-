@@ -1,0 +1,483 @@
+import pandas as pd
+import numpy as np
+import os
+os.chdir("C:\\Users\\User\\Downloads\\B10\\Assignments\\python")
+os.getcwd()
+actor=pd.read_csv("actor.csv")
+actor.head()
+actor.columns
+actor.info()
+# =============================================================================
+# Q1: Select first and last name from actor data set?
+# =============================================================================
+actor[['first_name', 'last_name']]
+#output:
+   first_name     last_name
+0    PENELOPE       GUINESS
+1        NICK      WAHLBERG
+2          ED         CHASE
+3    JENNIFER         DAVIS
+4      JOHNNY  LOLLOBRIGIDA
+5       BETTE     NICHOLSON
+6       GRACE        MOSTEL
+7     MATTHEW     JOHANSSON
+8         JOE         SWANK
+9   CHRISTIAN         GABLE
+10       ZERO          CAGE
+11       KARL         BERRY
+12        UMA          WOOD
+13     VIVIEN        BERGEN
+14       CUBA       OLIVIER
+15       FRED       COSTNER
+16      HELEN        VOIGHT
+17        DAN          TORN
+18        BOB       FAWCETT
+19    LUCILLE         TRACY
+20    KIRSTEN       PALTROW
+21      ELVIS          MARX
+22     SANDRA        KILMER
+23    CAMERON        STREEP
+24      KEVIN         BLOOM
+25        RIP      CRAWFORD
+26      JULIA       MCQUEEN
+27      WOODY       HOFFMAN
+28       ALEC         WAYNE
+29     SANDRA          PECK
+30      SISSY      SOBIESKI
+31        TIM       HACKMAN
+32      MILLA          PECK
+33     AUDREY       OLIVIER
+34       JUDY          DEAN
+35       BURT       DUKAKIS
+36        VAL        BOLGER
+37        TOM      MCKELLEN
+38     GOLDIE         BRODY
+39     JOHNNY          CAGE
+40      JODIE     DEGENERES
+41        TOM       MIRANDA
+42       KIRK      JOVOVICH
+43       NICK      STALLONE
+44      REESE        KILMER
+45     PARKER      GOLDBERG
+46      JULIA     BARRYMORE
+47    FRANCES     DAY-LEWIS
+48       ANNE        CRONYN
+49    NATALIE       HOPKINS
+# =============================================================================
+# Q2: Given a string and an integer number n, remove characters from a string starting from zero up to n and return output
+#Example: removeChars("pynative", 4)  output: tive
+
+# =============================================================================
+
+X="pynative,4"
+X[4:8]
+#output:'tive'
+# =============================================================================
+# Q3: Print country data from leadershipdata?
+# =============================================================================
+leader=pd.read_csv("leadershipdata.csv")
+leader.columns
+leader.info()
+leader[['Country']]
+#output:
+  Country
+0      US
+1      US
+2      UK
+3      UK
+4      UK
+5      UK
+6      US
+7      UK
+# =============================================================================
+# Q4: Get the all records whose have spent amount less than 2 with staff id 1 from payment dataset?
+# =============================================================================
+payment=pd.read_csv("payment.csv")
+payment.info()
+p=payment[payment.staff_id==1]
+a=p[p.amount < 2]
+a[['amount','staff_id']]
+#output:
+    amount  staff_id
+1     0.99         1
+17    0.99         1
+23    0.99         1
+25    0.99         1
+28    0.99         1
+29    1.99         1
+48    0.99         1
+49    0.99         1
+# =============================================================================
+# Q5: Get the list of customers whose first name is SUSAN/MARGARET/LISA/KAREN using IN operator? 
+# =============================================================================
+customer=pd.read_csv("customer.csv")
+customer.info()
+customer.first_name.value_counts()
+customer[customer.first_name.isin(['SUSAN','MARGARET','LISA','KAREN'])]
+#output:
+    customer_id  store_id  ...          create_date          last_update
+7             8         2  ...  2006-02-14 22:04:36  2006-02-15 04:57:20
+8             9         2  ...  2006-02-14 22:04:36  2006-02-15 04:57:20
+10           11         2  ...  2006-02-14 22:04:36  2006-02-15 04:57:20
+12           13         2  ...  2006-02-14 22:04:36  2006-02-15 04:57:20
+
+[4 rows x 9 columns]
+# =============================================================================
+# Q6: Frequency of string “Emma” appears in the given string?
+# =============================================================================
+string="""Emma is good developer. Emma is a writer"""
+string.count('Emma')
+#output:2
+# =============================================================================
+# Q7: Print the following pattern
+1 
+2 2 
+3 3 3 
+4 4 4 4 
+5 5 5 5 5
+
+# =============================================================================    
+n=5    
+for i in range(n+1):
+    for j in range(i):
+     print (i, end=" ")
+    print("\n")
+#output:
+1 
+
+2 2 
+
+3 3 3 
+
+4 4 4 4 
+
+5 5 5 5 5 
+
+# =============================================================================
+# Q8: Add list elements to a given set
+# =============================================================================
+s = {"Yellow", "Orange", "Black"}
+a = ["Blue", "Green", "Red"]
+s.update(a)
+print(s)
+#{'Black', 'Blue', 'Green', 'Orange', 'Red', 'Yellow'}
+
+# =============================================================================
+# Q9: Given a two list of numbers create a new list such that new list should contain only odd numbers from the first list and even numbers from the second list
+Example: First= [1, 2, 3, 9, 7]; Second=  [13, 43, 24, 36, 12]; Output:  [1, 3, 7, 9, 24, 36, 12]
+
+# =============================================================================
+First= [1, 2, 3, 9, 7] 
+Second=  [13, 43, 24, 36, 12]
+for i in First:
+    if i % 2 != 0:
+        print(i,end = " ")
+for j in Second:
+    if j % 2 == 0:
+        print(j,end = " ")
+#output:1 3 9 7 24 36 12
+# =============================================================================
+#Q10: Accept n number from user and print its multiplication table?
+#Example: user entered 2 
+#Output: 2,4,6,8,10,12,14,16,18,20
+# ============================================================================
+for x in range(2,22,2):
+        if(x%2)==0:
+            print(x,end=',')
+#output:2,4,6,8,10,12,14,16,18,20,
+# =============================================================================
+# Q11: Reverse the following list using for loop
+# =============================================================================
+list1 = [10, 20, 30, 40, 50]
+list1.reverse()
+print(list1)
+#output:[50, 40, 30, 20, 10]
+#or
+for i in reversed(list1):
+    print(i)
+#output
+50
+40
+30
+20
+10    
+# =============================================================================
+# Q12: Display -10 to -1 using for loop
+# =============================================================================
+
+for i in range(-10,0):
+    print(i)
+
+#output:
+-10
+-9
+-8
+-7
+-6
+-5
+-4
+-3
+-2
+-1
+
+# =============================================================================
+# Q13: Display a message “Done” after successful execution of for loop
+# =============================================================================
+for i in range(5):
+    print(i)
+print('Done')
+
+#output:
+0
+1
+2
+3
+4
+Done
+
+# =============================================================================
+# Q14: Return the largest item from the given list
+# =============================================================================
+List = [4, 6, 8, 24, 12, 2]
+
+max(List)
+#output:24
+
+# =============================================================================
+# Q15: Concatenate two lists index-wise
+# =============================================================================
+list1 = ["M", "na", "i", "Py"]
+list2 = ["y", "me", "s", "thon"]
+
+(list1[0])+(list2[0])
+'My'
+(list1[1])+(list2[1])
+'name'
+(list1[2])+(list2[2])
+'is'
+(list1[3])+(list2[3])
+'Python'
+for i in range(4):
+    print((list1[i])+(list2[i]),end=" " )
+#output:My name is Python
+
+#or
+[i+j for i,j in zip(list1, list2)]
+#output:['My', 'name', 'is', 'Python']
+# =============================================================================
+# Q16: Given a Python list. Turn every item of a list into its square
+# =============================================================================
+
+List = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+
+[i*i for i in List]
+#Output:[1, 4, 9, 16, 25, 36, 49, 56, 81, 100]
+
+# =============================================================================
+# Q17: Unpack the following tuple into 4 variables/object values
+# =============================================================================
+Tuple = (10, 20, 30, 40)
+a=Tuple[0] 
+b=Tuple[1] 
+c=Tuple[2] 
+d=Tuple[3] 
+print(a) # should print 10
+print(b) # should print 20
+print(c) # should print 30
+print(d) # should print 40
+#output:
+10
+20
+30
+40
+# =============================================================================
+# Q18: Swap the following two tuples without creating new object
+# =============================================================================
+tuple1 = (11, 22)
+tuple2 = (99, 88)
+
+swap(tuple1,tuple2)
+#output:((99, 88), (11, 22)) 
+ 
+# =============================================================================
+# #Q19:Below are the two lists convert it into the dictionary
+keys = ['Ten', 'Twenty', 'Thirty', 'Tan', 'cos', 'sin']
+values = [10, 20, 30, 3.44, 4.56, 5.66]
+# =============================================================================
+
+dict(zip(keys,values))
+#output:
+{'Ten': 10, 'Twenty': 20, 'Thirty': 30, 'Tan': 3.44, 'cos': 4.56, 'sin': 5.66}
+
+# =============================================================================
+# Q20: Access the value of key ‘history’
+sampleDict = { "class":{"student":{"name":"Mike","marks":{"physics":70,"history":80}}}}
+# =============================================================================
+
+print(sampleDict.get('class').get('student').get('marks').get('history'))
+#output:80
+# =============================================================================
+# Q21: Returns a new set with all items from both sets by removing duplicates
+set1 = [10, 20, 30, 40, 50]
+set2 = [30, 40, 50, 60, 70]
+# =============================================================================
+
+set1.union(set2)
+#Output: {10, 20, 30, 40, 50, 60, 70}
+
+# =============================================================================
+# Q22: Return a set of identical items from a given two Python set
+set1 = [10, 20, 30, 40, 50]
+set2 = [30, 40, 50, 60, 70]
+# =============================================================================
+
+set(set1).intersection(set(set2))
+#Output: {30, 40, 50}
+
+# =============================================================================
+# AUTOMOBILE DATA
+# =============================================================================
+auto=pd.read_csv("Automobile_data.csv")
+auto.info()
+# =============================================================================
+# Q23: Print first and last five rows
+# =============================================================================
+auto.head(5)
+#output:
+       company   body-style  wheel-base  ...  horsepower average-mileage    price
+0  alfa-romero  convertible        88.6  ...         111              21  13495.0
+1  alfa-romero  convertible        88.6  ...         111              21  16500.0
+2  alfa-romero    hatchback        94.5  ...         154              19  16500.0
+3         audi        sedan        99.8  ...         102              24  13950.0
+4         audi        sedan        99.4  ...         115              18  17450.0
+
+[5 rows x 9 columns]
+
+auto.tail(5)
+#output:
+       company body-style  wheel-base  ...  horsepower average-mileage    price
+56  volkswagen      sedan        97.3  ...          85              27   7975.0
+57  volkswagen      sedan        97.3  ...          52              37   7995.0
+58  volkswagen      sedan        97.3  ...         100              26   9995.0
+59       volvo      sedan       104.3  ...         114              23  12940.0
+60       volvo      wagon       104.3  ...         114              23  13415.0
+
+[5 rows x 9 columns]
+
+# =============================================================================
+# Q24: Find the most expensive car company name
+# =============================================================================
+auto['price'].max()
+#output: 45400.0
+auto[auto.price==45400.0]
+#output:
+          company body-style  wheel-base  ...  horsepower average-mileage    price
+35  mercedes-benz    hardtop       112.0  ...         184              14  45400.0
+
+# =============================================================================
+# Q25: Print All Toyota Cars details
+# =============================================================================
+auto[auto.company=='toyota']
+#output:
+company body-style  wheel-base  ...  horsepower average-mileage    price
+48  toyota  hatchback        95.7  ...          62              35   5348.0
+49  toyota  hatchback        95.7  ...          62              31   6338.0
+50  toyota  hatchback        95.7  ...          62              31   6488.0
+51  toyota      wagon        95.7  ...          62              31   6918.0
+52  toyota      wagon        95.7  ...          62              27   7898.0
+53  toyota      wagon        95.7  ...          62              27   8778.0
+54  toyota      wagon       104.5  ...         156              19  15750.0
+
+[7 rows x 9 columns]
+# =============================================================================
+# Q26: Count total cars per company
+# =============================================================================
+auto['company'].value_counts()
+#output:
+toyota           7
+bmw              6
+nissan           5
+mazda            5
+volkswagen       4
+audi             4
+mercedes-benz    4
+mitsubishi       4
+jaguar           3
+chevrolet        3
+isuzu            3
+honda            3
+porsche          3
+alfa-romero      3
+volvo            2
+dodge            2
+Name: company, dtype: int64
+
+# =============================================================================
+# Q27: Find each company’s Higesht price car
+# =============================================================================
+auto.groupby(['company'])['price'].max()
+#output:
+company
+alfa-romero      16500.0
+audi             18920.0
+bmw              41315.0
+chevrolet         6575.0
+dodge             6377.0
+honda            12945.0
+isuzu             6785.0
+jaguar           36000.0
+mazda            18344.0
+mercedes-benz    45400.0
+mitsubishi        8189.0
+nissan           13499.0
+porsche          37028.0
+toyota           15750.0
+volkswagen        9995.0
+volvo            13415.0
+Name: price, dtype: float64
+# =============================================================================
+# Q28: Find the average mileage of each car making company
+# =============================================================================
+auto.groupby(['company'])['average-mileage'].sum()
+#output:
+company
+alfa-romero       61
+audi              80
+bmw              114
+chevrolet        123
+dodge             62
+honda             79
+isuzu            100
+jaguar            43
+mazda            140
+mercedes-benz     72
+mitsubishi       118
+nissan           157
+porsche           51
+toyota           201
+volkswagen       127
+volvo             46
+Name: average-mileage, dtype: int64
+# =============================================================================
+# Q29: Sort all cars by Price column
+# =============================================================================
+auto.groupby(['company']).sum().sort_values('price',ascending=False)
+#output:
+               wheel-base  length  horsepower  average-mileage     price
+company                                                                 
+bmw                 620.6  1110.2         869              114  163280.0
+mercedes-benz       452.9   789.1         614               72  140160.0
+jaguar              328.0   590.9         614               43  103800.0
+porsche             277.4   513.5         702               51   71056.0
+audi                404.8   723.2         437               80   65570.0
+toyota              678.7  1173.0         528              201   57518.0
+mazda               479.5   821.3         377              140   48274.0
+alfa-romero         271.7   508.8         376               61   46495.0
+nissan              478.4   850.7         414              157   41445.0
+volkswagen          389.2   686.8         289              127   33740.0
+honda               289.5   501.6         277               79   30585.0
+mitsubishi          380.0   659.4         312              118   26756.0
+volvo               208.6   377.6         228               46   26355.0
+chevrolet           277.4   455.8         188              123   18021.0
+dodge               187.4   314.6         136               62   12606.0
+isuzu               283.3   482.5         218              100    6785.0
